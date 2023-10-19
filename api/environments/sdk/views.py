@@ -10,7 +10,6 @@ from environments.permissions.permissions import EnvironmentKeyPermissions
 
 class SDKEnvironmentAPIView(APIView):
     permission_classes = (EnvironmentKeyPermissions,)
-    throttle_classes = []
 
     def get_authenticators(self):
         return [EnvironmentKeyAuthentication(required_key_prefix="ser.")]
