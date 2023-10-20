@@ -235,7 +235,7 @@ REST_FRAMEWORK = {
         "signup": SIGNUP_THROTTLE_RATE,
         "mfa_code": "5/min",
         "invite": "10/min",
-        "user": USER_THROTTLE_RATE,
+        "admin": ADMIN_THROTTLE_RATE,
     },
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_RENDERER_CLASSES": [
