@@ -16,6 +16,7 @@ SDK_ENDPOINTS = (
     "/api/v1/identities",
     "/api/v1/traits",
     "/api/v1/traits/bulk",
+    "/api/v1/traits/increment-value",
     "/api/v1/environment-document",
     "/api/v1/analytics/flags",
 )

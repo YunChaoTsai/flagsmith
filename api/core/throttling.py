@@ -10,6 +10,7 @@ class AdminRateThrottle(UserRateThrottle):
     scope = "admin"
 
     def allow_request(self, request: Request, view: object) -> bool:
-        if request.path in SDK_ENDPOINTS:
+        path = request.path.rstrip("/")
+        if path in SDK_ENDPOINTS:
             return True
         return super().allow_request(request, view)
