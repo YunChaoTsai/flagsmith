@@ -14,7 +14,7 @@ SDK_ENDPOINTS = [
 
 
 class AdminRateThrottle(UserRateThrottle):
-    cache = caches[settings.ADMIN_THROTTLE_CACHE]
+    cache = caches[settings.ADMIN_THROTTLE_CACHE_NAME]
     scope = "admin"
 
     def allow_request(self, request: Request, view: object) -> bool:
