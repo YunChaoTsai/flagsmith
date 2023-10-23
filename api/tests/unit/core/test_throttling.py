@@ -1,7 +1,7 @@
 from importlib import reload
 
 from core import throttling as core_throttling
-from core.throttling import SDK_ENDPOINTS
+from core.constants import SDK_ENDPOINTS
 from rest_framework import throttling as rest_framework_throttling
 
 
