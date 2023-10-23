@@ -655,8 +655,8 @@ DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = env.bool(
 )
 
 # Uses redis-py native URL notation
+# e.g: redis://[[username]:[password]]@localhost:6379/0
 REDIS_CACHE_URL = env.str("REDIS_CACHE_URL", None)
-
 
 if REDIS_CACHE_URL:
     CACHES[REDIS_CACHE_NAME] = {

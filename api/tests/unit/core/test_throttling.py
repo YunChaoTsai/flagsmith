@@ -33,7 +33,7 @@ def test_admin_rate_throttle_allow_request_non_sdk_endpoint(rf, settings, test_u
     reload(core_throttling)
 
     # When
-    request = rf.get("/api/v1/organizations/")
+    request = rf.get("/api/v1/organisations/")
     request.user = test_user
     throttle = core_throttling.AdminRateThrottle()
 
