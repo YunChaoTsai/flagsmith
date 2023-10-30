@@ -219,9 +219,7 @@ elif "DJANGO_DB_NAME" in os.environ:
 LOGIN_THROTTLE_RATE = env("LOGIN_THROTTLE_RATE", "20/min")
 SIGNUP_THROTTLE_RATE = env("SIGNUP_THROTTLE_RATE", "10000/min")
 USER_THROTTLE_RATE = env("USER_THROTTLE_RATE", "500/min")
-DEFAULT_THROTTLE_CLASSES = env.list(
-    "DEFAULT_THROTTLE_CLASSES", default="core.throttling.AdminRateThrottle"
-)
+DEFAULT_THROTTLE_CLASSES = env.list("DEFAULT_THROTTLE_CLASSES", default=[])
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -237,7 +235,7 @@ REST_FRAMEWORK = {
         "signup": SIGNUP_THROTTLE_RATE,
         "mfa_code": "5/min",
         "invite": "10/min",
-        "admin": USER_THROTTLE_RATE,
+        "user": USER_THROTTLE_RATE,
     },
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_RENDERER_CLASSES": [

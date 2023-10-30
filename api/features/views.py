@@ -552,6 +552,7 @@ class SDKFeatureStates(GenericAPIView):
     authentication_classes = (EnvironmentKeyAuthentication,)
     renderer_classes = [JSONRenderer]
     pagination_class = None
+    throttle_classes = []
 
     @swagger_auto_schema(
         query_serializer=SDKFeatureStatesQuerySerializer(),

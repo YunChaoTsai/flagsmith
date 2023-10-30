@@ -39,6 +39,7 @@ class SDKAnalyticsFlags(GenericAPIView):
 
     permission_classes = (EnvironmentKeyPermissions,)
     authentication_classes = (EnvironmentKeyAuthentication,)
+    throttle_classes = []
 
     def get_serializer_class(self):
         if getattr(self, "swagger_fake_view", False):
