@@ -1,8 +1,7 @@
 from django.conf import settings
 from django.core.cache import caches
-from rest_framework.throttling import UserRateThrottle
+from rest_framework import throttling
 
 
-class AdminRateThrottle(UserRateThrottle):
+class UserRateThrottle(throttling.UserRateThrottle):
     cache = caches[settings.ADMIN_THROTTLE_CACHE_NAME]
-    scope = "user"
