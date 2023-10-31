@@ -598,13 +598,17 @@ ENVIRONMENT_SEGMENTS_CACHE_BACKEND = env(
 CACHE_ENVIRONMENT_DOCUMENT_SECONDS = env.int("CACHE_ENVIRONMENT_DOCUMENT_SECONDS", 0)
 ENVIRONMENT_DOCUMENT_CACHE_LOCATION = "environment-documents"
 
-ADMIN_THROTTLE_CACHE_NAME = "admin-throttle"
-ADMIN_THROTTLE_CACHE_BACKEND = env.str(
-    "ADMIN_THROTTLE_CACHE_BACKEND", "django.core.cache.backends.locmem.LocMemCache"
+USER_THROTTLE_CACHE_NAME = "user-throttle"
+USER_THROTTLE_CACHE_BACKEND = env.str(
+    "USER_THROTTLE_CACHE_BACKEND", "django.core.cache.backends.locmem.LocMemCache"
 )
-ADMIN_THROTTLE_CACHE_LOCATION = env.str(
-    "ADMIN_THROTTLE_CACHE_LOCATION", "admin-throttle"
-)
+USER_THROTTLE_CACHE_LOCATION = env.str("USER_THROTTLE_CACHE_LOCATION", "admin-throttle")
+
+# Using Redis for cache
+# In order to use redis for cache set the cache backend to `django_redis.cache.RedisCache`
+# and set the cache location to the redis url
+# ref: https://github.com/jazzband/django-redis/tree/5.4.0#configure-as-cache-backend
+
 # Avoid raising exceptions if redis is down
 # ref: https://github.com/jazzband/django-redis/tree/5.4.0#memcached-exceptions-behavior
 DJANGO_REDIS_IGNORE_EXCEPTIONS = env.bool(
@@ -663,9 +667,9 @@ CACHES = {
         "LOCATION": ENVIRONMENT_SEGMENTS_CACHE_LOCATION,
         "TIMEOUT": ENVIRONMENT_SEGMENTS_CACHE_SECONDS,
     },
-    ADMIN_THROTTLE_CACHE_NAME: {
-        "BACKEND": ADMIN_THROTTLE_CACHE_BACKEND,
-        "LOCATION": ADMIN_THROTTLE_CACHE_LOCATION,
+    USER_THROTTLE_CACHE_NAME: {
+        "BACKEND": USER_THROTTLE_CACHE_BACKEND,
+        "LOCATION": USER_THROTTLE_CACHE_LOCATION,
     },
 }
 
