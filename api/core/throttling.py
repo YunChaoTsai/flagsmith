@@ -4,4 +4,4 @@ from rest_framework import throttling
 
 
 class UserRateThrottle(throttling.UserRateThrottle):
-    cache = caches[settings.ADMIN_THROTTLE_CACHE_NAME]
+    cache = caches[settings.USER_THROTTLE_CACHE_NAME]

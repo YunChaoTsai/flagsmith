@@ -819,7 +819,7 @@ def test_create_segment_override(admin_client, feature, segment, environment):
 
 
 def test_get_flags_is_not_throttled_by_user_throttle(
-    api_client, environment, feature, settings
+    environment, feature, settings, api_client
 ):
     # Given
     settings.REST_FRAMEWORK = {"DEFAULT_THROTTLE_RATES": {"user": "1/minute"}}

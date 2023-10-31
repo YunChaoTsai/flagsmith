@@ -2,7 +2,7 @@ import typing
 
 import pytest
 from django.contrib.contenttypes.models import ContentType
-from django.core.cache import cache
+from django.core.cache import caches
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APIClient
 
@@ -265,9 +265,9 @@ def reset_cache():
     # https://groups.google.com/g/django-developers/c/zlaPsP13dUY
     # TL;DR: Use this if your test interacts with cache since django
     # does not clear cache after every test
-    cache.clear()
+    [cache.clear() for cache in caches.all()]
     yield
-    cache.clear()
+    [cache.clear() for cache in caches.all()]
 
 
 @pytest.fixture()
