@@ -118,6 +118,7 @@ class SelfHostedTelemetryAPIView(CreateAPIView):
 
     permission_classes = ()
     authentication_classes = ()
+    throttle_classes = []
     serializer_class = TelemetrySerializer
 
 
